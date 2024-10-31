@@ -1,0 +1,118 @@
+@import "./variables.less";
+@import "./mixins.less";
+
+@import "./modals.less";
+@import "./gallery.less";
+.rbd-video-base{
+    display: block;
+    position: relative;
+    height: auto;
+    width: 100%;
+    .rbd-video-content{
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+    .rbd-video-title{
+        display: block;
+        position: relative;
+        &.overlaid{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 6;
+            transition: opacity 0.8s;
+        }
+    }
+    .rbd-iframe-wrap{
+        background-color: transparent;
+        position: relative;
+        width: 100%;
+        iframe,
+        .rbd-iframe-element{
+            .abs-pos();
+            z-index: 2;
+        }
+    }
+    .rbd-video-thumbnail{
+        .abs-pos();
+        background-position: center;
+        background-size: cover;
+        position: absolute;
+        z-index: 3;
+        transition: opacity 0.8s ;
+    }
+    .play-icon{
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 25px solid #fff;
+        z-index: 4;
+        transform: translate(-50%,-50%);
+    }
+}
+.rbd-video-base.youtube .rbd-video-content{
+    cursor: pointer;
+}
+.rbd-video-base.youtube .rbd-video-content.play-video{
+    cursor: auto;
+}
+
+.rbd-video-base.play-video,
+.rbd-video-base .play-video{
+    .rbd-video-thumbnail,
+    .rbd-video-title.overlaid{
+        pointer-events: none;
+        opacity: 0;
+    }
+
+}
+
+
+#video-modals{
+    .rbd-modal-content{
+        border: none;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .rbd-modal-dialog{
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+// Vide Gallery Styles:
+ul.video-thumbnail-controls{
+    margin: 0;
+    display: block;
+    display: flex;
+    list-style: none;
+    margin-left: -2px!important;
+    margin-top: 12px;
+    li{
+        border-left: 2px solid #fff;
+        display: block;
+        float: left;
+        width: 33%;
+        flex: 1;
+        div{
+            cursor: pointer;
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    .thumbnail-controls-image{
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+}
